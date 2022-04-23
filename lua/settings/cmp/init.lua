@@ -1,5 +1,8 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local config_cmp = require"settings.cmp.config"
+local recursos = config_cmp.sources
+
 lspkind.init()
 
 cmp.setup({
@@ -9,7 +12,10 @@ cmp.setup({
       require"snippy".expand_snippet(args.body)
     end,
   },
-
+  window = {
+     -- completion = cmp.config.window.bordered(),
+     -- documentation = cmp.config.window.bordered(),
+  },
   -- Mapeos para el cmp
   mapping = {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -21,24 +27,16 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }),
   },
 
   -- Origenes para obtener la información
   sources = {
-    { name = "nvim_lsp" },
-    { name = "snippy" },
-    { name = "path" },
-    { name = "buffer",
-      option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end
-    },
-      keyword_length = 3,
-    }
+    recursos.nvim_lsp,
+    recursos.snippy,
+    recursos.buffer,
+    recursos.path,
   },
 
   -- Forma de presentar el menu
@@ -66,34 +64,23 @@ cmp.setup({
 
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = "cmp_git" },
+     recursos.cmd_git,
   }, {
-    { name = "buffer" },
+     recursos.buffer,
   })
 })
 
 cmp.setup.cmdline("/", {
   sources = {
-    {
-      name = "buffer",
-      keyword_length = 3,
-      max_item_count = 8,
-    },
+    recursos.buffer,
   }
 })
 
 cmp.setup.cmdline(":", {
   sources = cmp.config.sources(
   {
-    {
-      name = "path",
-      keyword_length = 5
-    }
+     recursos.path,
   }, {
-    {
-      name = "cmdline",
-      keyword_length = 3,
-      max_item_count = 5,
-    }
+     recursos.cmdline,
   })
 })

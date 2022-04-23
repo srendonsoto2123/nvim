@@ -19,15 +19,16 @@ local set = vim.opt
   set.smartcase = true
   set.ignorecase = true
   set.cursorline = true
-  set.wrap = true
-  set.list = false
+  set.wrap = false
+  set.list = true
   set.wildmenu = true
-  --  set.listchars = 'tab = "|", trail = ".", nbsp = "+"'
+  set.listchars = { tab = "|>", trail = ".", nbsp = "+" }
   set.scrolloff = 3
   set.sidescrolloff = 5
   set.relativenumber = true
   set.ruler = true
   set.showmatch = true
+  set.laststatus = 3
 -- END OPCIONES UI --
 
 -- OPCIONES FUNCIONALIDAD --
@@ -46,7 +47,6 @@ local set = vim.opt
 
 -- OPCIONES DE ESCRITURA --
   set.conceallevel = 0
-  set.wrap = true
   set.smartindent = true
   set.tabstop = 8
   set.softtabstop = 3
