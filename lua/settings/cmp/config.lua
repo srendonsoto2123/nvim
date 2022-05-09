@@ -7,7 +7,7 @@ local config_cmp = {
    sources = {
       nvim_lsp = {
          name = "nvim_lsp",
-         max_item_count = 8,
+         max_item_count = 10,
       },
       snippy = {
          name = "snippy",
@@ -15,7 +15,7 @@ local config_cmp = {
       },
       buffer = {
          name = "buffer",
-         keyword_length = 4,
+         keyword_length = 2,
          max_item_count = 3,
          option = {
             get_bufnrs = function()
@@ -25,13 +25,13 @@ local config_cmp = {
       },
       cmdline = {
          name = "cmdline",
-         keyword_length = 3,
+         keyword_length = 2,
          max_item_count = 5,
       },
       path = {
          name = "path",
-         keyword_length = 4,
-         max_item_count = 5,
+         keyword_length = 2,
+         max_item_count = 7,
       },
       cmp_git = {
          name = "cmp_git",

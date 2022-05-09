@@ -21,7 +21,7 @@ Plug.begin(neovim_dir .. "\\plugged")
   Plug "jiangmiao/auto-pairs"
   Plug "alvan/vim-closetag"
 
-  -- LAGUAGE SERVER PROTOCOL
+  -- LANGUAGE SERVER PROTOCOL
   Plug "neovim/nvim-lspconfig"
   Plug "williamboman/nvim-lsp-installer"
 

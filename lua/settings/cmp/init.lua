@@ -12,12 +12,11 @@ cmp.setup({
       require"snippy".expand_snippet(args.body)
     end,
   },
-  window = {
-     -- completion = cmp.config.window.bordered(),
-     -- documentation = cmp.config.window.bordered(),
-  },
+
   -- Mapeos para el cmp
   mapping = {
+    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
+    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-u>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
@@ -56,19 +55,15 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
-
-  view = {
-    entries = "native"
-  }
 })
 
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-     recursos.cmd_git,
-  }, {
-     recursos.buffer,
-  })
-})
+--cmp.setup.filetype('gitcommit', {
+  --sources = cmp.config.sources({
+     --recursos.cmd_git,
+  --}, {
+     --recursos.buffer,
+  --})
+--})
 
 cmp.setup.cmdline("/", {
   sources = {
@@ -82,5 +77,5 @@ cmp.setup.cmdline(":", {
      recursos.path,
   }, {
      recursos.cmdline,
-  })
+  }),
 })

@@ -19,16 +19,18 @@ local set = vim.opt
   set.smartcase = true
   set.ignorecase = true
   set.cursorline = true
+  set.cursorcolumn = true
   set.wrap = false
   set.list = true
   set.wildmenu = true
-  set.listchars = { tab = "|>", trail = ".", nbsp = "+" }
+  set.listchars = { tab = "<->", trail = "*", nbsp = "+" }
   set.scrolloff = 3
   set.sidescrolloff = 5
   set.relativenumber = true
   set.ruler = true
   set.showmatch = true
   set.laststatus = 3
+
 -- END OPCIONES UI --
 
 -- OPCIONES FUNCIONALIDAD --
@@ -37,8 +39,6 @@ local set = vim.opt
   set.writebackup = false
   set.undofile = true
   set.fileencoding = "utf-8"
-  set.spell = true
-  --  set.spelllang = "es"
   set.autowrite = true
   set.autowriteall = true
   set.hidden = true
@@ -57,5 +57,5 @@ local set = vim.opt
   set.expandtab = true
 -- END OPCIONES ESCRITURA --
 
--- CMD OPCIONE
+-- CMD OPCIONES
   vim.cmd( "colorscheme one" )
