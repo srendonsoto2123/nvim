@@ -1,4 +1,3 @@
-require("settings.plugins.closetag")
 require("settings.plugins.devicons")
 require("settings.plugins.nerdtree")
 require("settings.plugins.telescope")

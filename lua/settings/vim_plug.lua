@@ -5,9 +5,10 @@ Plug.begin(neovim_dir .. "\\plugged")
 
   -- TEMAS
   Plug "rakr/vim-one"
+  Plug( "folke/tokyonight.nvim", { branch = "main" } )
+  Plug "EdenEast/nightfox.nvim"
 
   -- MOVIMIENTO
-  Plug "easymotion/vim-easymotion"
   Plug "christoomey/vim-tmux-navigator"
   Plug "phaazon/hop.nvim"
 
@@ -16,10 +17,13 @@ Plug.begin(neovim_dir .. "\\plugged")
   Plug "nvim-lualine/lualine.nvim"
   Plug "rafcamlet/tabline-framework.nvim"
   Plug "kyazdani42/nvim-web-devicons"
+  Plug "rcarriga/nvim-notify"
+  Plug "xiyaowong/nvim-transparent"
+  Plug "Pocco81/TrueZen.nvim"
 
   -- ESCRITURA
   Plug "jiangmiao/auto-pairs"
-  Plug "alvan/vim-closetag"
+  Plug "windwp/nvim-ts-autotag"
 
   -- LANGUAGE SERVER PROTOCOL
   Plug "neovim/nvim-lspconfig"
@@ -30,6 +34,7 @@ Plug.begin(neovim_dir .. "\\plugged")
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
   Plug 'hrsh7th/nvim-cmp'
 
   -- RESALTADO

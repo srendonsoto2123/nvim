@@ -9,6 +9,9 @@ local config_cmp = {
          name = "nvim_lsp",
          max_item_count = 10,
       },
+      nvim_lsp_signature_help = {
+         name = "nvim_lsp_signature_help"
+      },
       snippy = {
          name = "snippy",
          max_item_count = 3,

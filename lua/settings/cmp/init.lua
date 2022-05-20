@@ -32,6 +32,7 @@ cmp.setup({
 
   -- Origenes para obtener la información
   sources = {
+    recursos.nvim_lsp_signature_help,
     recursos.nvim_lsp,
     recursos.snippy,
     recursos.buffer,
@@ -51,6 +52,9 @@ cmp.setup({
     }
   },
 
+   window = {
+      documentation = cmp.config.window.bordered(),
+   };
   -- Elementos experimentales para añadir al cmd
   experimental = {
     ghost_text = true,
@@ -66,12 +70,14 @@ cmp.setup({
 --})
 
 cmp.setup.cmdline("/", {
+   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     recursos.buffer,
   }
 })
 
 cmp.setup.cmdline(":", {
+   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources(
   {
      recursos.path,

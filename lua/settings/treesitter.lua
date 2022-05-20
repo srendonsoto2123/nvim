@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup {
-  ensure_installed = { 
+  ensure_installed = {
      "rust",
      "go",
      "lua",
@@ -17,13 +17,15 @@ require("nvim-treesitter.configs").setup {
      "tsx",
      "typescript",
      "bash",
-     "graphql"
   },
 
   sync_install = true,
 
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
+  },
+  indent = {
+     enable = false,
   },
 }

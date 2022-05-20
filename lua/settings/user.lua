@@ -8,7 +8,7 @@ local set = vim.opt
   set.clipboard = "unnamedplus"
   set.cmdheight = 2
   set.completeopt = { "menuone", "noinsert", "noselect" }
-  set.termguicolors = true
+  set.termguicolors = false
   set.title = true
   set.titlestring = "%<%F - nvim"
   set.icon = true
@@ -19,7 +19,7 @@ local set = vim.opt
   set.smartcase = true
   set.ignorecase = true
   set.cursorline = true
-  set.cursorcolumn = true
+--  set.cursorcolumn = true
   set.wrap = false
   set.list = true
   set.wildmenu = true
@@ -30,7 +30,10 @@ local set = vim.opt
   set.ruler = true
   set.showmatch = true
   set.laststatus = 3
-
+  set.linebreak = true
+  set.colorcolumn = "81"
+  set.background = "dark"
+  
 -- END OPCIONES UI --
 
 -- OPCIONES FUNCIONALIDAD --
@@ -43,6 +46,7 @@ local set = vim.opt
   set.autowriteall = true
   set.hidden = true
   set.encoding = "utf-8"
+  set.lazyredraw = true
 -- END OPCIONES FUNCIONALIDAD --
 
 -- OPCIONES DE ESCRITURA --
@@ -55,7 +59,5 @@ local set = vim.opt
   set.foldexpr = ""
   set.foldmethod = "manual"
   set.expandtab = true
+  set.matchpairs = "(:),{:},[:],<:>"
 -- END OPCIONES ESCRITURA --
-
--- CMD OPCIONES
-  vim.cmd( "colorscheme one" )
