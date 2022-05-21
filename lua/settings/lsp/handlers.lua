@@ -60,7 +60,7 @@ local function lsp_highlight_document(client)
 end
 
 local mapping = require"utils.mapping"
-local lsp_keymaps = require"mapping.mapeos".setLspMaps
+local lsp_keymaps = require"mapping.maps".setLspMaps
 
 M.on_attach = function (client, bufnr)
    mapping.set_maps( lsp_keymaps( bufnr) )

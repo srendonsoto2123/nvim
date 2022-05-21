@@ -1,4 +1,10 @@
-require("telescope").setup({
+local status_telescope, telescope = pcall(require, "telescope")
+
+if not status_telescope then
+   return
+end
+
+telescope.setup({
   defaults = {
     sorting_strategy = "ascending",
     selection_strategy = "follow",
@@ -19,5 +25,6 @@ require("telescope").setup({
   },
 })
 
+require("mapping")"telescope"
 require"telescope".load_extension"fzy_native"
 require"telescope".load_extension"media_files"

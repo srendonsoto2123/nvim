@@ -61,3 +61,6 @@ local set = vim.opt
   set.expandtab = true
   set.matchpairs = "(:),{:},[:],<:>"
 -- END OPCIONES ESCRITURA --
+
+-- User maps
+require("mapping")("user")

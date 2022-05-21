@@ -1,4 +1,9 @@
-local cmp = require("cmp")
+local status_cmp, cmp = pcall(require, "cmp")
+
+if not status_cmp then
+   return
+end
+
 local lspkind = require("lspkind")
 local config_cmp = require"settings.cmp.config"
 local recursos = config_cmp.sources

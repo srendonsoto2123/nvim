@@ -1,13 +1,10 @@
 local mapping = require("utils.mapping")
 local map_cr = mapping.map_cr
 
-local mapeos = {
-   maps = {
-      -- NERDTREE MAPS
-      map_cr("n", "<Leader>nt", "NERDTreeFind"):with_noremap(),
-      map_cr("v", "<Leader>nt", "NERDTreeFind"):with_noremap(),
+local maps = {
 
-      -- USER MAPS
+   -- USER MAPS
+   user = {
       map_cr("n", "<Leader>w", "w"):with_noremap(),
       map_cr("n", "<Leader>W", "wa"):with_noremap(),
       map_cr("n", "<Leader>q", "q"):with_noremap(),
@@ -16,20 +13,32 @@ local mapeos = {
       map_cr("n", "<Leader>hl", "nohlsearch"):with_noremap(),
       map_cr("n", "<Leader>Y", "y$"):with_noremap(),
       map_cr("n", "<M-z>", "set wrap!"):with_noremap(),
+   },
 
-      -- LSP MAPPING
+   -- LSP MAPPING
+   lsp = {
       map_cr("n", "<Leader>o", "lua vim.diagnostic.open_float()"):with_noremap(),
       map_cr("n", "g{", "lua vim.diagnostic.goto_prev({ border = rounded })"):with_noremap(),
       map_cr("n", "g}", "lua vim.diagnostic.goto_next({ border = rounded })"):with_noremap(),
       map_cr("n", "<Leader>ll", "lua vim.diagnostic.setloclist()"):with_noremap(),
-
-      -- TELESCOPE
+   },
+   
+   -- TELESCOPE
+   telescope = {
       map_cr("n", "<Leader>tf", "lua require('telescope.builtin').find_files()"),
       map_cr("n", "<Leader>tg", "lua require('telescope.builtin').live_grep()"),
       map_cr("n", "<Leader>tb", "lua require('telescope.builtin').buffers()"),
       map_cr("n", "<Leader>th", "lua require('telescope.builtin').help_tags()"),
+   },
 
-      -- MOTION MAPS
+   -- NERDTREE MAPS
+   nerdtree = {
+      map_cr("n", "<Leader>nt", "NERDTreeFind"):with_noremap(),
+      map_cr("v", "<Leader>nt", "NERDTreeFind"):with_noremap(),
+   },
+
+   -- MOTION MAPS
+   hop = {
       map_cr("n", "<Leader>j", "HopChar2AC"):with_noremap():with_silent(),
       map_cr("n", "<Leader>k", "HopChar2BC"):with_noremap():with_silent(),
       map_cr("v", "<Leader>j", "HopChar2AC"):with_noremap():with_silent(),
@@ -41,6 +50,7 @@ local mapeos = {
       map_cr("n", "<Leader>s", "HopPattern"):with_noremap():with_silent(),
       map_cr("v", "<Leader>s", "HopPattern"):with_noremap():with_silent(),
    },
+   
    setLspMaps = function(bufnr)
       local fn = "lua vim.lsp.buf."
       return {
@@ -58,7 +68,7 @@ local mapeos = {
          map_cr("n", "gr", fn .. "references()"):set_buffer(bufnr):with_noremap():with_silent(),
          map_cr("n", "<Leader>f", fn .. "formatting()"):set_buffer(bufnr):with_noremap():with_silent(),
       }
-   end
+   end,
 }
 
-return mapeos;
+return maps;

@@ -1,4 +1,10 @@
-require("nvim-treesitter.configs").setup {
+local status_treesitter, treesitter_configs = pcall(require, "nvim-tresitter.configs") 
+
+if not status_treesitter then
+   return
+end
+
+treesitter_configs.setup {
   ensure_installed = {
      "rust",
      "go",
@@ -23,7 +29,7 @@ require("nvim-treesitter.configs").setup {
 
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
   indent = {
      enable = false,

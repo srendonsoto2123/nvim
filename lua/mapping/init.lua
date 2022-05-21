@@ -1,5 +1,12 @@
 local mapping = require("utils.mapping")
-local maps = require("mapping.mapeos").maps
+
+
+local function load_maps( name_maps )
+   local maps = require("mapping.maps")[name_maps]
+   mapping.set_maps( maps )
+end
+
+return load_maps
 
 -- local map_cmd = mapping.map_cmd
 -- local map_cu = mapping.map_cu
@@ -15,4 +22,3 @@ local maps = require("mapping.mapeos").maps
 -- map_g({ mode = "n", key = "<Leader>vs", rhs = ":vs" })
 -- map_g({ mode = "n", key = "<Leader>hs", rhs = ":sp" })
 
-mapping.set_maps( maps )
