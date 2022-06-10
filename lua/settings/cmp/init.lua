@@ -18,6 +18,10 @@ cmp.setup({
     end,
   },
 
+  completion = {
+     autocomplete = false,
+  },
+
   -- Mapeos para el cmp
   mapping = {
     ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
@@ -58,6 +62,7 @@ cmp.setup({
   },
 
    window = {
+      completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
    };
   -- Elementos experimentales para añadir al cmd
