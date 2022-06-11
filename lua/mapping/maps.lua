@@ -2,7 +2,6 @@ local mapping = require("utils.mapping")
 local map_cr = mapping.map_cr
 
 local maps = {
-
    -- USER MAPS
    user = {
       map_cr("n", "<Leader>w", "w"):with_noremap(),
@@ -13,6 +12,8 @@ local maps = {
       map_cr("n", "<Leader>hl", "nohlsearch"):with_noremap(),
       map_cr("n", "<Leader>Y", "y$"):with_noremap(),
       map_cr("n", "<M-z>", "set wrap!"):with_noremap(),
+      map_cr("n", "<Leader>,", "bp"):with_noremap():with_silent(),
+      map_cr("n", "<Leader>.", "bn"):with_noremap():with_silent(),
    },
 
    -- LSP MAPPING
@@ -22,7 +23,7 @@ local maps = {
       map_cr("n", "g}", "lua vim.diagnostic.goto_next({ border = rounded })"):with_noremap(),
       map_cr("n", "<Leader>ll", "lua vim.diagnostic.setloclist()"):with_noremap(),
    },
-   
+
    -- TELESCOPE
    telescope = {
       map_cr("n", "<Leader>tf", "lua require('telescope.builtin').find_files()"),
@@ -50,7 +51,7 @@ local maps = {
       map_cr("n", "<Leader>s", "HopPattern"):with_noremap():with_silent(),
       map_cr("v", "<Leader>s", "HopPattern"):with_noremap():with_silent(),
    },
-   
+
    setLspMaps = function(bufnr)
       local fn = "lua vim.lsp.buf."
       return {
