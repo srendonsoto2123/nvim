@@ -7,3 +7,4 @@ end
 require "mapping" "lsp"
 require "settings.lsp.config"
 require "settings.lsp.handlers".setup()
+require "settings.lsp.null_ls"

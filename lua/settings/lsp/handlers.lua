@@ -47,9 +47,9 @@ M.setup = function()
       })
    end
 
-   if vim.lsp.handlers["textDocument/formatting"] ~= nil then
-      vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()")
-   end
+   --if vim.lsp.handlers["textDocument/formatting"] ~= nil then
+   --vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()")
+   --end
 end
 
 local function lsp_highlight_document(client)
