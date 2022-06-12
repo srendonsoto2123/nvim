@@ -4,7 +4,6 @@ local neovim_dir = vim.fn.stdpath("data")
 Plug.begin(neovim_dir .. "\\plugged")
 
   -- TEMAS
-  Plug "rakr/vim-one"
   Plug( "folke/tokyonight.nvim", { branch = "main" } )
   Plug "EdenEast/nightfox.nvim"
 
@@ -28,6 +27,9 @@ Plug.begin(neovim_dir .. "\\plugged")
   -- LANGUAGE SERVER PROTOCOL
   Plug "neovim/nvim-lspconfig"
   Plug "williamboman/nvim-lsp-installer"
+  Plug "jose-elias-alvarez/null-ls.nvim"
+  -- FORMAT
+  Plug "onsails/lspkind-nvim"
 
   -- AUTOCOMPLETE
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -49,11 +51,8 @@ Plug.begin(neovim_dir .. "\\plugged")
   Plug "nvim-telescope/telescope-media-files.nvim"
 
   -- SNIPPETS
-  Plug "dcampos/nvim-snippy"
   Plug "dcampos/cmp-snippy"
-
-  -- FORMAT
-  Plug "onsails/lspkind-nvim"
+  Plug "dcampos/nvim-snippy"
 
   -- INTEGRACIÓN CON GIT
   Plug "tpope/vim-fugitive"

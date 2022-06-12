@@ -4,6 +4,6 @@ if not lsp_status then
    return
 end
 
-require"mapping""lsp"
-require"settings.lsp.config"
-require"settings.lsp.handlers".setup()
+require "mapping" "lsp"
+require "settings.lsp.config"
+require "settings.lsp.handlers".setup()
