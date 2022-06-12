@@ -23,7 +23,7 @@ set.cursorline = true
 set.wrap = false
 set.list = true
 set.wildmenu = true
-set.listchars = { tab = "<->", trail = "*", nbsp = "+", eol = "¬" }
+set.listchars = { tab = "<->", trail = "*", nbsp = "+" }
 set.scrolloff = 3
 set.sidescrolloff = 5
 set.relativenumber = true

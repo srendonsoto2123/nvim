@@ -35,8 +35,8 @@ M.setup = function()
 
    vim.diagnostic.config(config)
 
-   if vim.lsp.handlers["textdocument/hover"] ~= nil then
-      vim.lsp.handlers["textdocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+   if vim.lsp.handlers["textDocument/hover"] ~= nil then
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
          border = "rounded",
       })
    end
@@ -47,8 +47,8 @@ M.setup = function()
       })
    end
 
-   if vim.lsp.handlers["textDocument/formatting"] then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+   if vim.lsp.handlers["textDocument/formatting"] ~= nil then
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2500)")
    end
 end
 
