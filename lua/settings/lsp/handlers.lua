@@ -48,7 +48,7 @@ M.setup = function()
    end
 
    if vim.lsp.handlers["textDocument/formatting"] ~= nil then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2500)")
+      vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()")
    end
 end
 
