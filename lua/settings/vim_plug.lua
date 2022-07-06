@@ -12,7 +12,7 @@ Plug "christoomey/vim-tmux-navigator"
 Plug "phaazon/hop.nvim"
 
 -- UI - INTERFAZ
-Plug "scrooloose/nerdtree"
+Plug "kyazdani42/nvim-tree.lua"
 Plug "nvim-lualine/lualine.nvim"
 Plug "feline-nvim/feline.nvim"
 Plug "rafcamlet/tabline-framework.nvim"

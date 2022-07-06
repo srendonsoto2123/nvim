@@ -1,6 +1,5 @@
 local mapping = require("utils.mapping")
 
-
 local function load_maps( name_maps )
    local maps = require("mapping.maps")[name_maps]
    mapping.set_maps( maps )
