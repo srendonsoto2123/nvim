@@ -1,4 +1,4 @@
-require"settings.user"
+require "settings.user"
 require"settings.vim_plug"
 require"settings.colorschema"
 require"settings.plugins"
