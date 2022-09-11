@@ -1,0 +1,22 @@
+set relativenumber
+set cmdheight=2
+set completeopt="menuone,noinsert,noselect"
+set nohlsearch
+set smartcase
+set ignorecase
+set cursorline
+set scrolloff=5
+set sidescrolloff=5
+set ruler
+set showmatch
+set laststatus=3
+set smartindent
+set softtabstop=2
+set shiftwidth=2
+set smarttab
+set expandtab
+set matchpairs="(:),{:},[:],<:>"
+set termguicolors
+set clipboard="xclip"
+
+let g:loaded_perl_provider=0
