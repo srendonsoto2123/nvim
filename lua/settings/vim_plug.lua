@@ -19,6 +19,7 @@ Plug "rafcamlet/tabline-framework.nvim"
 Plug "kyazdani42/nvim-web-devicons"
 Plug "rcarriga/nvim-notify"
 Plug "SmiteshP/nvim-gps"
+Plug("SergioRibera/vim-screenshot", { run = "npm install --prefix Renderizer" })
 
 -- ESCRITURA
 Plug "jiangmiao/auto-pairs"

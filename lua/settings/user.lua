@@ -23,12 +23,13 @@ set.breakindent = true
 set.colorcolumn = "81"
 set.background = "dark"
 set.list = true
-set.listchars = { trail = "»", nbsp = "", extends = "•", precedes = "•" }
+set.listchars = { trail = "»", eol = "", extends = "•", precedes = "•" }
 -- END OPCIONES UI --
 
 -- OPCIONES FUNCIONALIDAD --
 set.clipboard = "unnamedplus"
 set.undodir = vim.fn.stdpath("cache") .. "/undo"
+set.hidden = true
 set.updatetime = 300
 set.writebackup = false
 set.undofile = true
@@ -37,7 +38,7 @@ set.autowrite = true
 set.autowriteall = true
 set.encoding = "utf-8"
 set.smartcase = true
-set.ignorecase = true
+set.lazyredraw = true
 -- END OPCIONES FUNCIONALIDAD --
 
 -- OPCIONES DE ESCRITURA --
@@ -52,6 +53,10 @@ set.foldmethod = "manual"
 set.expandtab = true
 set.matchpairs = "(:),{:},[:],<:>"
 -- END OPCIONES ESCRITURA --
+
+-- OPCIONES DE GUI
+
+-- END OPCIONES GUI
 
 -- User maps
 require("mapping")("user")
