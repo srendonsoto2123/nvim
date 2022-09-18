@@ -6,7 +6,7 @@ end
 local handlers = require"settings.lsp.handlers"
 
 lsp_installer.settings({
-   ensure_installed = { "rust_analyzer", "sumneko_lua" },
+   ensure_installed = { "rust_analyzer", "sumneko_lua", "dockerls", "elixirls" },
    ui = {
       icons = {
          server_installed = "✓",
