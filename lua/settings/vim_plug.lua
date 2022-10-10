@@ -1,7 +1,7 @@
 local Plug = require("utils.vim_plug")
 local neovim_dir = vim.fn.stdpath("data")
 
-Plug.begin(neovim_dir .. "\\plugged")
+Plug.begin(neovim_dir .. "/plugged")
 
 -- TEMAS
 Plug("folke/tokyonight.nvim", { branch = "main" })
