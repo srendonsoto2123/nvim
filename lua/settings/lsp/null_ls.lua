@@ -12,13 +12,13 @@ local formatting = null_ls.builtins.formatting
 
 local on_attach = function(client)
   if client.resolved_capabilities.document_formatting then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
   end
 end
 
 local sources = {
   -- Formateadores de código.
-  formatting.prettier, -- Formateador de código prettier
+  --formatting.prettier, -- Formateador de código prettier
   --formatting.lua_format, -- Formateador de código para lua
   --formatting.black, -- Para python
   --formatting.brittany, -- Para haskell

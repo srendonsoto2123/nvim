@@ -1,7 +1,7 @@
 local Plug = require("utils.vim_plug")
 local neovim_dir = vim.fn.stdpath("data")
 
-Plug.begin(neovim_dir .. "\\plugged")
+Plug.begin(neovim_dir .. "/plugged")
 
 -- TEMAS
 Plug("folke/tokyonight.nvim", { branch = "main" })
@@ -17,6 +17,7 @@ Plug "nvim-lualine/lualine.nvim" -- Plugins repetidos statusline
 Plug "feline-nvim/feline.nvim" -- Plugins repetidos statusline
 Plug "kyazdani42/nvim-web-devicons" -- Plugin para iconos.
 Plug "rcarriga/nvim-notify" -- Plugin para notificaciones en neovim
+Plug "Hitesh-Aggarwal/feline_one_monokai.nvim" -- Versión de feline
 
 -- ESCRITURA
 Plug "jiangmiao/auto-pairs" -- Plugin para autopairs. Posible cambio
@@ -24,7 +25,8 @@ Plug "windwp/nvim-ts-autotag" -- Plugin para autotags.
 
 -- LANGUAGE SERVER PROTOCOL
 Plug "neovim/nvim-lspconfig" -- Plugin para las configuraciones del lsp
-Plug "williamboman/nvim-lsp-installer" -- Plugin para instalar los server del lsp
+Plug "williamboman/mason.nvim"
+Plug "williamboman/mason-lspconfig.nvim"
 Plug "jose-elias-alvarez/null-ls.nvim" -- Plugin para funcionalidades lsp extras
 -- FORMAT
 Plug "onsails/lspkind-nvim" -- Plugin para formatear salidas de funciones
@@ -54,5 +56,8 @@ Plug "dcampos/nvim-snippy"
 
 -- INTEGRACIÓN CON GIT
 Plug "tpope/vim-fugitive"
+
+-- DEBUG
+Plug "mfussenegger/nvim-dap"
 
 Plug.ends();

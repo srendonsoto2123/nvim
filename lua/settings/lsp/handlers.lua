@@ -73,6 +73,9 @@ local lsp_keymaps = require "mapping.maps".setLspMaps
 M.on_attach = function(client, bufnr)
    mapping.set_maps(lsp_keymaps(bufnr))
    lsp_highlight_document(client)
+   local file = io.open("./client.txt", "a")
+   file:write(vim.inspect(client))
+   file:close()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
