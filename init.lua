@@ -1,4 +1,5 @@
 require"user"
+require"packer"
 require"vim_plug"
 require"core"
-require"plugins"
+--require"plugins"
