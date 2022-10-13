@@ -21,7 +21,7 @@ Plug "Hitesh-Aggarwal/feline_one_monokai.nvim" -- Versión de feline
 
 -- ESCRITURA
 Plug "jiangmiao/auto-pairs" -- Plugin para autopairs. Posible cambio
-Plug "windwp/nvim-ts-autotag" -- Plugin para autotags.
+--Plug "windwp/nvim-ts-autotag" -- Plugin para autotags.
 
 -- LANGUAGE SERVER PROTOCOL
 Plug "neovim/nvim-lspconfig" -- Plugin para las configuraciones del lsp

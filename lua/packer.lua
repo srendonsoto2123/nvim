@@ -1,0 +1,2 @@
+-- Archivo para hacer el cambio de vim_plug a packer para hacer uso de los 
+-- plugins

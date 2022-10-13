@@ -1,4 +1,4 @@
-local api = vim.api
+local keymap = vim.keymap.set
 
 local Map = {}
 
@@ -11,9 +11,9 @@ function Map:new( mode, key )
       noremap = false,
       silent = false,
       expr = false,
-      nowait = false
+      nowait = false,
+      buffer = 0,
     },
-    buffer = -1
   }
 
   setmetatable(instance, self)
@@ -37,7 +37,7 @@ end
 
 function Map:set_buffer( buffer )
   if buffer > -1 then
-    self.buffer = buffer
+    self.opts.buffer = buffer
   else
     error( "Buffer no puede tener numeros negativos" )
   end
@@ -45,7 +45,7 @@ function Map:set_buffer( buffer )
 end
 
 function Map:with_noremap()
-  self.opts.noremap = true
+  self.opts.remap = false
   return self
 end
 
@@ -88,16 +88,11 @@ end
 
 function mapping.set_maps( maps )
   for _, map in pairs( maps ) do
-    local buffer = map.buffer
     local mode = map.mode
     local key = map.key
     local cmd = map.cmd
     local opts = map.opts
-    if map.buffer > -1 then
-      api.nvim_buf_set_keymap( buffer, mode, key, cmd, opts )
-    else
-      api.nvim_set_keymap( mode, key, cmd, opts )
-    end
+    keymap( mode, key, cmd, opts )
   end
 end
 
