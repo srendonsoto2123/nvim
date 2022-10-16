@@ -12,7 +12,7 @@ function Map:new( mode, key )
       silent = false,
       expr = false,
       nowait = false,
-      buffer = 0,
+      buffer = nil,
     },
   }
 

@@ -21,7 +21,7 @@ set.laststatus = 3
 set.linebreak = true
 set.breakindent = true
 set.colorcolumn = "81"
-set.background = "dark"
+--set.background = "dark"
 set.list = true
 set.listchars = { trail = "»", eol = "", extends = "•", precedes = "•" }
 -- END OPCIONES UI --
