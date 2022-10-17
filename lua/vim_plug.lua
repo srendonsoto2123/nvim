@@ -13,15 +13,13 @@ Plug "phaazon/hop.nvim"
 
 -- UI - INTERFAZ
 Plug "kyazdani42/nvim-tree.lua" -- Visualizador de archivos
-Plug "nvim-lualine/lualine.nvim" -- Plugins repetidos statusline
 Plug "feline-nvim/feline.nvim" -- Plugins repetidos statusline
 Plug "kyazdani42/nvim-web-devicons" -- Plugin para iconos.
 Plug "rcarriga/nvim-notify" -- Plugin para notificaciones en neovim
-Plug "Hitesh-Aggarwal/feline_one_monokai.nvim" -- Versión de feline
 
 -- ESCRITURA
 Plug "jiangmiao/auto-pairs" -- Plugin para autopairs. Posible cambio
---Plug "windwp/nvim-ts-autotag" -- Plugin para autotags.
+Plug "windwp/nvim-ts-autotag" -- Plugin para autotags.
 
 -- LANGUAGE SERVER PROTOCOL
 Plug "neovim/nvim-lspconfig" -- Plugin para las configuraciones del lsp

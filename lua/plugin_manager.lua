@@ -3,30 +3,53 @@
 local status_packer, packer = pcall(require, "packer")
 
 if not status_packer then
-  local path_install = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-  vim.notify(packer)
+  vim.notify(packer, "error", {
+    title = "Packer"
+  })
   return
 end
 
 local setup = function(use)
-  use "wbthomason/packer.nvim"
+  use { "wbthomason/packer.nvim" }
   
   -- Temas de colores
   use { "folke/tokyonight.nvim", branch = "main" }
   use { "EdenEast/nightfox.nvim" }
 
   -- Movimiento en el editor
-  use { "phaazon/hop.nvim" }
+  use { "phaazon/hop.nvim", 
+      config = function() 
+        require("plugins.hopnvim")
+      end
+  }
 
   -- Interfaz
   use { "kyazdani42/nvim-tree.lua",
+      config = function()
+        require("plugins.nvimtree")
+      end,
       requires = {
         "kyazdani42/nvim-web-devicons"
       }
   }
-  use { "feline-nvim/feline.nvim" }
-  use { "rcarriga/nvim-notify" }
+  use { "feline-nvim/feline.nvim",
+    config = function()
+      require("plugins.feline_temp")
+    end
+  }
+  use { "rcarriga/nvim-notify",
+    config = function()
+      require("plugins.notify")
+    end
+  }
 
+  -- Plugins para escritura.
+  use { "jiangmiao/auto-pairs",
+    config = function()
+      require("plugins.autopairs")
+    end
+  }
+  use { "windwp/nvim-ts-autotag" }
 
   -- LSP Language Server Protocol
   use { "neovim/nvim-lspconfig",
@@ -36,18 +59,23 @@ local setup = function(use)
       "jose-elias-alvarez/null-ls.nvim",
     }
   }
+  
   -- Formato para el CMP
-  use "onsails/lspkind-nvim" 
+  use { "onsails/lspkind-nvim" }
 
   use {
     "hrsh7th/nvim-cmp",
-    require = {
+    requires = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp",
-      { "dcampos/nvim-snippy", requires = "dcampos/cmp-snippy" }
+      { "dcampos/nvim-snippy",
+        config = function()
+          require("plugins.snippy")
+        end,
+        requires = "dcampos/cmp-snippy" }
     }
   }
 
@@ -59,11 +87,14 @@ local setup = function(use)
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim",
-      require = {
+      config = function()
+        require("plugins.telescope")
+      end,
+      requires = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-fzy-native.nvim",
         "nvim-telescope/telescope-media-files.nvim",
-      }
+      },
   }
  
 
@@ -81,7 +112,7 @@ local setup = function(use)
 end
 
 local setup_2 = function(use)
-  use "wbthomason/packer.nvim"
+  use { "wbthomason/packer.nvim" }
 end
 
 return packer.startup(setup)

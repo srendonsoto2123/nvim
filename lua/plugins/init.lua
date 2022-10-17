@@ -5,5 +5,5 @@
 --require "settings.plugins.lualine"
 --require("settings.plugins.feline")
 --require("plugins.hopnvim")
---require("settings.plugins.autopairs")
+require("plugins.autopairs")
 --require("settings.plugins.closetag")

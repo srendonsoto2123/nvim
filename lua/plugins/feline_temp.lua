@@ -1,5 +1,8 @@
 local line_ok, feline = pcall(require, "feline")
 if not line_ok then
+  vim.notify(feline, "error", {
+    title = "Feline.nvim"
+  })
 	return
 end
 

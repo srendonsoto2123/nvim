@@ -1,12 +1,12 @@
-local status_nvimtree, nvimtree = pcall(require, "nvim-tree")
+local status_nvimtree, nvim_tree = pcall(require, "nvim-tree")
 
 if not status_nvimtree then
-  vim.notify("No se ha encontrado el plugin nvim-tree, parece que no ha sido instalado", "error", {
-      title = "nvim-tree",
+  vim.notify(nvim_tree, "error", {
+      title = "Nvim-tree",
    })
    return
 end
 
-nvimtree.setup()
+nvim_tree.setup()
 
 require"mapping""nvimtree"
