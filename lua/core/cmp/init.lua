@@ -1,13 +1,16 @@
 local status_cmp, cmp = pcall(require, "cmp")
 
 if not status_cmp then
-   return
+  vim.notify(cmp, "error", {
+    title = "Cmp - Autocomplete"
+  })
+  return
 end
 
 local lspkind = require("lspkind")
-local config_cmp = require"settings.cmp.config"
+local config_cmp = require("core.cmp.config")
 local recursos = config_cmp.sources
-local snippy = require"snippy"
+local snippy = require("snippy")
 
 lspkind.init()
 

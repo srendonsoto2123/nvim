@@ -3,7 +3,7 @@ if not installer_state then
    return
 end
 
-local handlers = require"settings.lsp.handlers"
+local handlers = require"core.lsp.handlers"
 
 lsp_installer.settings({
    ensure_installed = { "rust_analyzer", "sumneko_lua", "dockerls", "elixirls" },
