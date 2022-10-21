@@ -12,6 +12,9 @@ local maps = {
     map_cr("n", "<M-z>", "set wrap!"):with_noremap(),
     map_cr("n", "<Leader>,", "bp"):with_noremap():with_silent(),
     map_cr("n", "<Leader>.", "bn"):with_noremap():with_silent(),
+    map_cr("n", "<Leader>vab", "vert ba"):with_silent(),
+    map_cr("n", "<Leader>tab", "tab ba"):with_silent(),
+    map_cr("n", "<Leader>bd", "bd"):with_silent(),
   },
 
   -- LSP MAPPING

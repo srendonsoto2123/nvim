@@ -3,6 +3,7 @@ local set = vim.opt
 -- GLOBAL
 vim.g.mapleader = " "
 vim.g.one_allow_italics = 1
+vim.g.loaded_perl_provider = 0
 
 -- OPCIONES UI --
 set.cmdheight = 2
@@ -53,10 +54,6 @@ set.foldmethod = "manual"
 set.expandtab = true
 set.matchpairs = "(:),{:},[:],<:>"
 -- END OPCIONES ESCRITURA --
-
--- OPCIONES DE GUI
-
--- END OPCIONES GUI
 
 -- User maps
 require("mapping")("user")
