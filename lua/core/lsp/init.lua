@@ -53,9 +53,13 @@ mason_lspconfig.setup({
   }
 )
 
+local handlers = require("core.lsp.handlers")
+
 mason_lspconfig.setup_handlers({
   function(server_name)
-    lspconfig[server_name].setup({})
+    lspconfig[server_name].setup({
+      on_attach = handlers.on_attach,
+    })
     require("core.lsp.handlers").setup()
     require("mapping")("lsp")
   end,

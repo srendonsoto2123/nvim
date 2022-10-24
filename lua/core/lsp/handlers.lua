@@ -53,7 +53,7 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-   if client.resolved_capabilities.document_highlight then
+   if client.server_capabilities.documentHighlightProvider then
       vim.api.nvim_exec(
          [[
          augroup lsp_document_highlight
@@ -73,13 +73,13 @@ local lsp_keymaps = require "mapping.maps".setLspMaps
 M.on_attach = function(client, bufnr)
    mapping.set_maps(lsp_keymaps(bufnr))
    lsp_highlight_document(client)
-   local file = io.open("./client.txt", "a")
-   file:write(vim.inspect(client))
-   file:close()
 end
 
 local cmp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_status then
+  vim.notify(cmp_nvim_lsp, "error", {
+    title = "Cmp nvim lsp"
+  })
   return
 end
 

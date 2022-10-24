@@ -24,7 +24,6 @@ cmp.setup({
 
   completion = {
      autocomplete = false,
-     keyword_length = 2,
   },
 
   preselect = false,
@@ -63,7 +62,6 @@ cmp.setup({
        end
     end, { "i", "s" }),
   },
-
   -- Origenes para obtener la información
   sources = {
     recursos.nvim_lsp_signature_help,

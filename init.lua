@@ -1,5 +1,4 @@
 require"user"
 require"plugin_manager"
---require"vim_plug"
 require"core"
 require"plugins"

@@ -59,7 +59,7 @@ local setup = function(use)
       "jose-elias-alvarez/null-ls.nvim",
     }
   }
-  
+
   -- Formato para el CMP
   use { "onsails/lspkind-nvim" }
 

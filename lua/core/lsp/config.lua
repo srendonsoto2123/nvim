@@ -1,12 +1,3 @@
-require("mason").setup()
-local installer_state, mason_installer = pcall(require, "mason-lspconfig")
-if not installer_state then
-  vim.notify(mason_installer, "error", {
-    title = "Mason lspconfig"
-  })
-  return
-end
-
 local handlers = require"core.lsp.handlers"
 
 mason_installer.setup({
