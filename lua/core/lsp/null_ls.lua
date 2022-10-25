@@ -8,17 +8,17 @@ if not status_null_ls then
 end
 
 local formatting = null_ls.builtins.formatting
---local diagnostics = null_ls.builtins.diagnostics
+local diagnostics = null_ls.builtins.diagnostics
 
 local on_attach = function(client)
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
   end
 end
 
 local sources = {
   -- Formateadores de código.
-  --formatting.prettier, -- Formateador de código prettier
+  formatting.prettier, -- Formateador de código prettier
   --formatting.lua_format, -- Formateador de código para lua
   --formatting.black, -- Para python
   --formatting.brittany, -- Para haskell
@@ -33,7 +33,7 @@ local sources = {
   -- Diagnosticos del código.
   --diagnostics.actionlint, -- Para workflow github
   --diagnostics.credo, -- Para elixir
-  --diagnostics.eslint, -- Para desarrollo web
+  diagnostics.eslint, -- Para desarrollo web
   --diagnostics.flake8, -- Para python
   --diagnostics.shellcheck, -- Para shell-script
 }

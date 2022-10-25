@@ -64,3 +64,5 @@ mason_lspconfig.setup_handlers({
     require("mapping")("lsp")
   end,
 })
+
+require("core.lsp.null_ls")
