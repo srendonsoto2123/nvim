@@ -1,16 +1,3 @@
---local lsp_status, _ = pcall(require, "lspconfig")
-
---if not lsp_status then
-  --vim.notify("Erros en lsp no hay plugin lspconfig", "error", {
-    --title = "Lsp Init"
-  --})
-  --return
---end
---
---require("mapping")("lsp")
---require("core.lsp.config")
---require("core.lsp.null_ls")
-
 local mason_status, mason = pcall(require, "mason")
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
@@ -54,6 +41,7 @@ mason_lspconfig.setup({
 )
 
 local handlers = require("core.lsp.handlers")
+handlers.setup()
 
 mason_lspconfig.setup_handlers({
   function(server_name)
@@ -63,6 +51,24 @@ mason_lspconfig.setup_handlers({
     require("core.lsp.handlers").setup()
     require("mapping")("lsp")
   end,
+  ["sumneko_lua"] = function()
+    lspconfig.sumneko_lua.setup {
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT"
+          },
+          diagnostics = {
+            globals = { "vim" }
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false
+          }
+        }
+      }
+    }
+  end
 })
 
 require("core.lsp.null_ls")

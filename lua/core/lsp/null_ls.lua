@@ -10,9 +10,15 @@ end
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
-local on_attach = function(client)
+local on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.format({
+        timeout_ms = 8000,
+      }) end
+    })
   end
 end
 
@@ -33,7 +39,6 @@ local sources = {
   -- Diagnosticos del código.
   --diagnostics.actionlint, -- Para workflow github
   --diagnostics.credo, -- Para elixir
-  diagnostics.eslint, -- Para desarrollo web
   --diagnostics.flake8, -- Para python
   --diagnostics.shellcheck, -- Para shell-script
 }
