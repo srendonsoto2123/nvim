@@ -1,5 +1,3 @@
-local handlers = require"core.lsp.handlers"
-
 mason_installer.setup({
    ensure_installed = { "rust_analyzer", "sumneko_lua", "dockerls", "elixirls" },
    ui = {

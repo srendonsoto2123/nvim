@@ -24,21 +24,20 @@ if not lspconfig_status then
 end
 
 mason.setup({
-     ui = {
-        icons = {
-           package_installed = "✓",
-           package_pending = "➜",
-           package_uninstalled = "✗",
-      },
-      border = "rounded"
-    }
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+    border = "rounded"
+  }
 })
 
 mason_lspconfig.setup({
-     ensure_installed = { "rust_analyzer", "sumneko_lua", "dockerls", "elixirls",
-                          "eslint", "yamlls", "bashls", "jsonls", "pyright"},
-  }
-)
+  ensure_installed = { "rust_analyzer", "sumneko_lua", "dockerls", "elixirls",
+    "eslint", "yamlls", "bashls", "jsonls", "pyright" },
+})
 
 local handlers = require("core.lsp.handlers")
 handlers.setup()
@@ -47,8 +46,8 @@ mason_lspconfig.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
       on_attach = handlers.on_attach,
+      capabilities = handlers.capabilities,
     })
-    require("core.lsp.handlers").setup()
     require("mapping")("lsp")
   end,
   ["sumneko_lua"] = function()
@@ -66,7 +65,14 @@ mason_lspconfig.setup_handlers({
             checkThirdParty = false
           }
         }
-      }
+      },
+      on_attach = handlers.on_attach,
+      capabilities = handlers.capabilities,
+    }
+  end,
+  ["elixirls"] = function()
+    lspconfig.elixirls.setup {
+      cmd = { "/home/srendonsoto2123/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" }
     }
   end
 })

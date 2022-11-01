@@ -17,13 +17,13 @@ lspkind.init()
 cmp.setup({
   -- Snippet configuraciones
   snippet = {
-    expand = function( args )
-      require"snippy".expand_snippet(args.body)
+    expand = function(args)
+      require "snippy".expand_snippet(args.body)
     end,
   },
 
   completion = {
-     autocomplete = false,
+    autocomplete = false,
   },
 
   preselect = false,
@@ -44,22 +44,22 @@ cmp.setup({
       select = true,
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
-         if cmp.visible() then
-            cmp.select_next_item()
-         elseif snippy.can_expand_or_advance() then
-            snippy.expand_or_advance()
-         else
-            fallback()
-         end
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif snippy.can_expand_or_advance() then
+        snippy.expand_or_advance()
+      else
+        fallback()
+      end
     end, { "i", "s" }),
     ["<s-Tab>"] = cmp.mapping(function(fallback)
-       if cmp.visible() then
-          cmp.select_prev_item()
-       elseif snippy.can_jump(-1) then
-          snippy.previous()
-       else
-          fallback()
-       end
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif snippy.can_jump(-1) then
+        snippy.previous()
+      else
+        fallback()
+      end
     end, { "i", "s" }),
   },
   -- Origenes para obtener la información
@@ -84,10 +84,10 @@ cmp.setup({
     }
   },
 
-   window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-   };
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  };
   -- Elementos experimentales para añadir al cmd
   experimental = {
     ghost_text = true,
@@ -95,26 +95,26 @@ cmp.setup({
 })
 
 --cmp.setup.filetype('gitcommit', {
-  --sources = cmp.config.sources({
-     --recursos.cmd_git,
-  --}, {
-     --recursos.buffer,
-  --})
+--sources = cmp.config.sources({
+--recursos.cmd_git,
+--}, {
+--recursos.buffer,
+--})
 --})
 
 cmp.setup.cmdline("/", {
-   mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     recursos.buffer,
   }
 })
 
 cmp.setup.cmdline(":", {
-   mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources(
-  {
-     recursos.path,
-  }, {
-     recursos.cmdline,
+    {
+      recursos.path,
+    }, {
+    recursos.cmdline,
   }),
 })
