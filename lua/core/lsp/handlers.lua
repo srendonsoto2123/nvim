@@ -24,7 +24,7 @@ M.setup = function()
     underline = true,
     severity_sort = true,
     float = {
-      focusable = false,
+      focusable = true,
       style = "minimal",
       border = "rounded",
       source = "always",
@@ -72,7 +72,6 @@ local lsp_keymaps = require "mapping.maps".setLspMaps
 
 M.on_attach = function(client, bufnr)
   mapping.set_maps(lsp_keymaps(bufnr))
-  lsp_highlight_document(client)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', "v:lua.vim.lsp.omnifunc")
 
   if client.server_capabilities.documentFormattingProvider then
@@ -89,6 +88,7 @@ M.on_attach = function(client, bufnr)
 end
 
 local cmp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
 if not cmp_status then
   vim.notify(cmp_nvim_lsp, "error", {
     title = "Cmp nvim lsp"

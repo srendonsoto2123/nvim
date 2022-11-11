@@ -1,4 +1,4 @@
--- Archivo para hacer el cambio de vim_plug a packer para hacer uso de los 
+-- Archivo para hacer el cambio de vim_plug a packer para hacer uso de los
 -- plugins
 local status_packer, packer = pcall(require, "packer")
 
@@ -11,26 +11,26 @@ end
 
 local setup = function(use)
   use { "wbthomason/packer.nvim" }
-  
+
   -- Temas de colores
   use { "folke/tokyonight.nvim", branch = "main" }
   use { "EdenEast/nightfox.nvim" }
 
   -- Movimiento en el editor
-  use { "phaazon/hop.nvim", 
-      config = function() 
-        require("plugins.hopnvim")
-      end
+  use { "phaazon/hop.nvim",
+    config = function()
+      require("plugins.hopnvim")
+    end
   }
 
   -- Interfaz
   use { "kyazdani42/nvim-tree.lua",
-      config = function()
-        require("plugins.nvimtree")
-      end,
-      requires = {
-        "kyazdani42/nvim-web-devicons"
-      }
+    config = function()
+      require("plugins.nvimtree")
+    end,
+    requires = {
+      "kyazdani42/nvim-web-devicons"
+    }
   }
   use { "feline-nvim/feline.nvim",
     config = function()
@@ -87,16 +87,17 @@ local setup = function(use)
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim",
-      config = function()
-        require("plugins.telescope")
-      end,
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-fzy-native.nvim",
-        "nvim-telescope/telescope-media-files.nvim",
-      },
+    config = function()
+      require("plugins.telescope")
+    end,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzy-native.nvim",
+      "nvim-telescope/telescope-media-files.nvim",
+      "nvim-telescope/telescope-dap.nvim"
+    },
   }
- 
+
 
   -- Snippets para autocompletado de funciones
   use { "dcampos/cmp-snippy",
@@ -105,7 +106,7 @@ local setup = function(use)
     }
   }
 
-  -- Integración con git 
+  -- Integración con git
   use { "tpope/vim-fugitive" }
 
   use { "mfussenegger/nvim-dap" }

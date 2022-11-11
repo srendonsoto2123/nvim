@@ -62,7 +62,6 @@ local maps = {
       map_cr("n", "<Leader>rn", fn .. "rename()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "<Leader>c", fn .. "code_action()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "gr", fn .. "references()"):set_buffer(bufnr):with_noremap():with_silent(),
-      map_cr("n", "<Leader>f", fn .. "formatting()"):set_buffer(bufnr):with_noremap():with_silent(),
     }
   end,
 }

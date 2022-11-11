@@ -13,10 +13,12 @@ local config_cmp = {
     },
     snippy = {
       name = "snippy",
+      max_item_count = 5,
     },
     buffer = {
       name = "buffer",
       keyword_length = 2,
+      max_item_count = 8,
       option = {
         get_bufnrs = function()
           return vim.api.nvim_list_bufs()

@@ -16,11 +16,7 @@ lspkind.init()
 
 cmp.setup({
   -- Snippet configuraciones
-  snippet = {
-    expand = function(args)
-      require "snippy".expand_snippet(args.body)
-    end,
-  },
+  snippet = config_cmp.snippet,
 
   completion = {
     autocomplete = false,
@@ -64,11 +60,11 @@ cmp.setup({
   },
   -- Origenes para obtener la información
   sources = {
-    recursos.nvim_lsp_signature_help,
     recursos.nvim_lsp,
     recursos.snippy,
     recursos.buffer,
     recursos.path,
+    recursos.nvim_lsp_signature_help,
   },
 
   -- Forma de presentar el menu
@@ -111,10 +107,11 @@ cmp.setup.cmdline("/", {
 
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources(
-    {
+  sources = cmp.config.sources({
       recursos.path,
     }, {
     recursos.cmdline,
   }),
 })
+
+
