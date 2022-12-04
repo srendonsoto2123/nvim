@@ -1,7 +1,8 @@
 local status_telescope, telescope = pcall(require, "telescope")
 
 if not status_telescope then
-   return
+  vim.notify(telescope)
+  return
 end
 
 telescope.setup({
@@ -10,7 +11,7 @@ telescope.setup({
     selection_strategy = "follow",
     selection_caret = "  ",
     prompt_prefix = "  ",
-    file_ignore_patterns = { ".git", "node_modules" },
+    file_ignore_patterns = { ".git", "node_modules", "target" },
   },
   pickers = {},
   extensions = {
@@ -25,6 +26,7 @@ telescope.setup({
   },
 })
 
-require("mapping")"telescope"
-require"telescope".load_extension"fzy_native"
-require"telescope".load_extension"media_files"
+require("mapping") "telescope"
+require "telescope".load_extension "fzy_native"
+require "telescope".load_extension "media_files"
+require "telescope".load_extension "dap"

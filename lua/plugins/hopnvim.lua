@@ -1,7 +1,10 @@
 local status_hop, hopnvim = pcall(require,"hop")
 
 if not status_hop then
-   return
+  vim.notify(hopnvim, "error", {
+    title = "hop",
+  })
+  return
 end
 
 hopnvim.setup {

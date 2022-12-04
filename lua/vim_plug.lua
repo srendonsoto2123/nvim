@@ -8,28 +8,26 @@ Plug("folke/tokyonight.nvim", { branch = "main" })
 Plug "EdenEast/nightfox.nvim"
 
 -- MOVIMIENTO
-Plug "christoomey/vim-tmux-navigator"
+Plug "christoomey/vim-tmux-navigator" -- Puede no ser útil
 Plug "phaazon/hop.nvim"
 
 -- UI - INTERFAZ
-Plug "kyazdani42/nvim-tree.lua"
-Plug "nvim-lualine/lualine.nvim"
-Plug "feline-nvim/feline.nvim"
-Plug "rafcamlet/tabline-framework.nvim"
-Plug "kyazdani42/nvim-web-devicons"
-Plug "rcarriga/nvim-notify"
-Plug "SmiteshP/nvim-gps"
+Plug "kyazdani42/nvim-tree.lua" -- Visualizador de archivos
+Plug "feline-nvim/feline.nvim" -- Plugins repetidos statusline
+Plug "kyazdani42/nvim-web-devicons" -- Plugin para iconos.
+Plug "rcarriga/nvim-notify" -- Plugin para notificaciones en neovim
 
 -- ESCRITURA
-Plug "jiangmiao/auto-pairs"
-Plug "windwp/nvim-ts-autotag"
+Plug "jiangmiao/auto-pairs" -- Plugin para autopairs. Posible cambio
+Plug "windwp/nvim-ts-autotag" -- Plugin para autotags.
 
 -- LANGUAGE SERVER PROTOCOL
-Plug "neovim/nvim-lspconfig"
-Plug "williamboman/nvim-lsp-installer"
-Plug "jose-elias-alvarez/null-ls.nvim"
+Plug "neovim/nvim-lspconfig" -- Plugin para las configuraciones del lsp
+Plug "williamboman/mason.nvim"
+Plug "williamboman/mason-lspconfig.nvim"
+Plug "jose-elias-alvarez/null-ls.nvim" -- Plugin para funcionalidades lsp extras
 -- FORMAT
-Plug "onsails/lspkind-nvim"
+Plug "onsails/lspkind-nvim" -- Plugin para formatear salidas de funciones
 
 -- AUTOCOMPLETE
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -56,5 +54,8 @@ Plug "dcampos/nvim-snippy"
 
 -- INTEGRACIÓN CON GIT
 Plug "tpope/vim-fugitive"
+
+-- DEBUG
+Plug "mfussenegger/nvim-dap"
 
 Plug.ends();

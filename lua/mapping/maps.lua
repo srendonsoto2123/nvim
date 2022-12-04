@@ -9,11 +9,12 @@ local maps = {
     map_cr("n", "<Leader>q", "q"):with_noremap(),
     map_cr("n", "<Leader>Q", "qa"):with_noremap(),
     map_cr("n", "<Leader>S", "wqa"):with_noremap(),
-    map_cr("n", "<Leader>hl", "nohlsearch"):with_noremap(),
-    map_cr("n", "<Leader>Y", "y$"):with_noremap(),
     map_cr("n", "<M-z>", "set wrap!"):with_noremap(),
     map_cr("n", "<Leader>,", "bp"):with_noremap():with_silent(),
     map_cr("n", "<Leader>.", "bn"):with_noremap():with_silent(),
+    map_cr("n", "<Leader>vab", "vert ba"):with_silent(),
+    map_cr("n", "<Leader>tab", "tab ba"):with_silent(),
+    map_cr("n", "<Leader>bd", "bd"):with_silent(),
   },
 
   -- LSP MAPPING
@@ -34,22 +35,16 @@ local maps = {
 
   -- NVIMTREE MAPS
   nvimtree = {
-    map_cr("n", "<Leader>nt", "NvimTreeToggle"):with_noremap(),
-    map_cr("v", "<Leader>nt", "NvimTreeToggle"):with_noremap(),
+    map_cr({"n", "v"}, "<Leader>nt", "NvimTreeToggle"):with_noremap(),
   },
 
   -- MOTION MAPS
   hop = {
-    map_cr("n", "<Leader>j", "HopChar2AC"):with_noremap():with_silent(),
-    map_cr("n", "<Leader>k", "HopChar2BC"):with_noremap():with_silent(),
-    map_cr("v", "<Leader>j", "HopChar2AC"):with_noremap():with_silent(),
-    map_cr("v", "<Leader>k", "HopChar2BC"):with_noremap():with_silent(),
-    map_cr("n", "<Leader>d", "HopLineStartAC"):with_noremap():with_silent(),
-    map_cr("n", "<Leader>e", "HopLineStartBC"):with_noremap():with_silent(),
-    map_cr("v", "<Leader>d", "HopLineStartAC"):with_noremap():with_silent(),
-    map_cr("v", "<Leader>e", "HopLineStartBC"):with_noremap():with_silent(),
-    map_cr("n", "<Leader>s", "HopPattern"):with_noremap():with_silent(),
-    map_cr("v", "<Leader>s", "HopPattern"):with_noremap():with_silent(),
+    map_cr({ "n", "v" }, "<Leader>j", "HopChar2AC"):with_noremap():with_silent(),
+    map_cr({ "n", "v" }, "<Leader>k", "HopChar2BC"):with_noremap():with_silent(),
+    map_cr({ "n", "v" }, "<Leader>d", "HopLineStartAC"):with_noremap():with_silent(),
+    map_cr({ "n", "v" }, "<Leader>e", "HopLineStartBC"):with_noremap():with_silent(),
+    map_cr({ "n", "v" }, "<Leader>s", "HopPattern"):with_noremap():with_silent(),
   },
 
   setLspMaps = function(bufnr)
@@ -67,7 +62,6 @@ local maps = {
       map_cr("n", "<Leader>rn", fn .. "rename()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "<Leader>c", fn .. "code_action()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "gr", fn .. "references()"):set_buffer(bufnr):with_noremap():with_silent(),
-      map_cr("n", "<Leader>f", fn .. "formatting()"):set_buffer(bufnr):with_noremap():with_silent(),
     }
   end,
 }
