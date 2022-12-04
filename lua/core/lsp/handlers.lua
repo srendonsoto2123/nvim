@@ -74,6 +74,10 @@ M.on_attach = function(client, bufnr)
   mapping.set_maps(lsp_keymaps(bufnr))
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', "v:lua.vim.lsp.omnifunc")
 
+  if client.name == 'tsserver' then
+    client.server_capabilities.documentFormattingProvider = false;
+  end
+
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("Format", { clear = true }),

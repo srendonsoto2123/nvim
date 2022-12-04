@@ -66,8 +66,6 @@ mason_lspconfig.setup_handlers({
           }
         }
       },
-      on_attach = handlers.on_attach,
-      capabilities = handlers.capabilities,
     }
   end,
   ["elixirls"] = function()
