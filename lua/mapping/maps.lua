@@ -1,20 +1,24 @@
 local mapping = require("utils.mapping")
 local map_cr = mapping.map_cr
+local map_cmd = mapping.map_cmd
+
+local telescope_builtin = "lua require('telescope.builtin')."
 
 local maps = {
   -- USER MAPS
   user = {
-    map_cr("n", "<Leader>w", "w"):with_noremap(),
-    map_cr("n", "<Leader>W", "wa"):with_noremap(),
-    map_cr("n", "<Leader>q", "q"):with_noremap(),
-    map_cr("n", "<Leader>Q", "qa"):with_noremap(),
-    map_cr("n", "<Leader>S", "wqa"):with_noremap(),
-    map_cr("n", "<M-z>", "set wrap!"):with_noremap(),
-    map_cr("n", "<Leader>,", "bp"):with_noremap():with_silent(),
-    map_cr("n", "<Leader>.", "bn"):with_noremap():with_silent(),
-    map_cr("n", "<Leader>vab", "vert ba"):with_silent(),
-    map_cr("n", "<Leader>tab", "tab ba"):with_silent(),
-    map_cr("n", "<Leader>bd", "bd"):with_silent(),
+    map_cr({ "n", "v" }, "<Leader>w", "w"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>W", "wa"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>q", "q"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>Q", "qa"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>S", "wqa"):with_noremap(),
+    map_cr({ "n", "v" }, "<M-z>", "set wrap!"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>,", "bp"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>.", "bn"):with_noremap(),
+    map_cmd({ "n", "v" }, "<c-j>", "<c-w>j"):with_noremap(),
+    map_cmd({ "n", "v" }, "<c-h>", "<c-w>h"):with_noremap(),
+    map_cmd({ "n", "v" }, "<c-k>", "<c-w>k"):with_noremap(),
+    map_cmd({ "n", "v" }, "<c-l>", "<c-w>l"):with_noremap(),
   },
 
   -- LSP MAPPING
@@ -27,15 +31,19 @@ local maps = {
 
   -- TELESCOPE
   telescope = {
-    map_cr("n", "<Leader>tf", "lua require('telescope.builtin').find_files()"),
-    map_cr("n", "<Leader>tg", "lua require('telescope.builtin').live_grep()"),
-    map_cr("n", "<Leader>tb", "lua require('telescope.builtin').buffers()"),
-    map_cr("n", "<Leader>th", "lua require('telescope.builtin').help_tags()"),
+    map_cr("n", "<Leader>tf", telescope_builtin .. "find_files()"),
+    map_cr("n", "<Leader>tg", telescope_builtin .. "live_grep()"),
+    map_cr("n", "<Leader>tb", telescope_builtin .. "buffers()"),
+    map_cr("n", "<Leader>th", telescope_builtin .. "help_tags()"),
+    map_cr("n", "<Leader>tc", telescope_builtin .. "commands()"),
+    map_cr("n", "<Leader>td", telescope_builtin .. "diagnostics()")
   },
 
   -- NVIMTREE MAPS
   nvimtree = {
-    map_cr({"n", "v"}, "<Leader>nt", "NvimTreeToggle"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>nt", "NvimTreeToggle"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>nf", "NvimTreeFocus"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>nc", "NvimTreeClose"):with_noremap(),
   },
 
   -- MOTION MAPS
