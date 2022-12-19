@@ -22,6 +22,7 @@ set.laststatus = 3
 set.linebreak = true
 set.breakindent = true
 set.colorcolumn = "81"
+set.cursorcolumn = true
 --set.background = "dark"
 set.list = true
 set.listchars = { trail = "»", eol = "", extends = "•", precedes = "•" }
@@ -38,6 +39,7 @@ set.fileencoding = "utf-8"
 set.autowrite = true
 set.autowriteall = true
 set.encoding = "utf-8"
+set.ignorecase = true
 set.smartcase = true
 set.lazyredraw = true
 -- END OPCIONES FUNCIONALIDAD --
