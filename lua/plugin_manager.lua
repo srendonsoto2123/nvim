@@ -17,38 +17,19 @@ local setup = function(use)
   use { "EdenEast/nightfox.nvim" }
 
   -- Movimiento en el editor
-  use { "phaazon/hop.nvim",
-    config = function()
-      require("plugins.hopnvim")
-    end
-  }
+  use { "phaazon/hop.nvim" }
 
   -- Interfaz
   use { "kyazdani42/nvim-tree.lua",
-    config = function()
-      require("plugins.nvimtree")
-    end,
     requires = {
       "kyazdani42/nvim-web-devicons"
     }
   }
-  use { "feline-nvim/feline.nvim",
-    config = function()
-      require("plugins.feline_temp")
-    end
-  }
-  use { "rcarriga/nvim-notify",
-    config = function()
-      require("plugins.notify")
-    end
-  }
+  use { "feline-nvim/feline.nvim" }
+  use { "rcarriga/nvim-notify" }
 
   -- Plugins para escritura.
-  use { "jiangmiao/auto-pairs",
-    config = function()
-      require("plugins.autopairs")
-    end
-  }
+  use { "jiangmiao/auto-pairs" }
   use { "windwp/nvim-ts-autotag" }
 
   -- LSP Language Server Protocol
@@ -72,9 +53,6 @@ local setup = function(use)
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp",
       { "dcampos/nvim-snippy",
-        config = function()
-          require("plugins.snippy")
-        end,
         requires = "dcampos/cmp-snippy" }
     }
   }
@@ -87,9 +65,6 @@ local setup = function(use)
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim",
-    config = function()
-      require("plugins.telescope")
-    end,
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",

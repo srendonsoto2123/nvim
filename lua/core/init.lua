@@ -1,5 +1,2 @@
-require"core.colorschema"
-require"core.treesitter"
-require"core.lsp"
-require"core.cmp"
---require"core.lsp_08"
+require 'core.cmp'
+require 'core.lsp'

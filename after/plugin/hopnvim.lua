@@ -10,5 +10,3 @@ end
 hopnvim.setup {
   keys = 'asdfghjklñqwertyuiopzxcvbnm,.-',
 }
-
-require("mapping")"hop"

@@ -8,5 +8,3 @@ if not status_nvimtree then
 end
 
 nvim_tree.setup()
-
-require"mapping""nvimtree"
