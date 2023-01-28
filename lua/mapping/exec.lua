@@ -10,7 +10,7 @@ if status_nvimtree then
   map('nvimtree')
 end
 
-local status_hop, _ = pcall(require, "hop-nvim")
+local status_hop, _ = pcall(require, "hop")
 if status_hop then
   map('hop')
 end

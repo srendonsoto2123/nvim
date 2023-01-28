@@ -37,7 +37,7 @@ mason.setup({
 mason_lspconfig.setup({
   ensure_installed = { "rust_analyzer", "sumneko_lua", "dockerls", "elixirls",
     "eslint", "yamlls", "bashls", "jsonls", "pyright" },
-})
+ })
 
 local handlers = require("core.lsp.handlers")
 handlers.setup()
@@ -72,7 +72,14 @@ mason_lspconfig.setup_handlers({
     lspconfig.elixirls.setup {
       cmd = { "/home/srendonsoto2123/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" }
     }
-  end
+  end,
+  ["rust_analyzer"] = function()
+    lspconfig.rust_analyzer.setup({
+      cmd = {
+        "rustup", "run", "stable", "rust-analyzer",
+      }
+    })
+  end,
 })
 
 require("core.lsp.null_ls")

@@ -17,7 +17,8 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function() vim.lsp.buf.format({
         bufnr = bufnr,
-        timeout_ms = 8000,
+        async = true,
+        -- timeout_ms = 8000,
       }) end
     })
   end
@@ -27,7 +28,7 @@ local sources = {
   -- Formateadores de código.
   formatting.prettier, -- Formateador de código prettier
   --formatting.lua_format, -- Formateador de código para lua
-  --formatting.black, -- Para python
+  --formattieg.black, -- Para python
   --formatting.brittany, -- Para haskell
   --formatting.gofmt, -- Para golang
   --formatting.nginx_beautifier, -- Para archivo de configuraciones nginx
