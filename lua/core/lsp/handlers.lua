@@ -80,10 +80,9 @@ M.on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function() vim.lsp.buf.format({
           bufnr = bufnr,
-          -- timeout_ms = 8000,
-          async = true,
-          filter = function(client)
-            return client.name ~= "tsserver"
+          timeout_ms = 5000,
+          filter = function(cliente)
+            return cliente.name ~= "tsserver"
           end
         })
       end

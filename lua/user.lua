@@ -39,10 +39,11 @@ set.fileencoding = "utf-8"
 set.autowrite = true
 set.autowriteall = true
 set.encoding = "utf-8"
-set.ignorecase = true
 set.smartcase = true
+set.ignorecase = true
 set.lazyredraw = true
 -- END OPCIONES FUNCIONALIDAD --
+set.ignorecase = true
 
 -- OPCIONES DE ESCRITURA --
 set.conceallevel = 0

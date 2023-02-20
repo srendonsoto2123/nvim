@@ -17,8 +17,7 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function() vim.lsp.buf.format({
         bufnr = bufnr,
-        async = true,
-        -- timeout_ms = 8000,
+        timeout_ms = 5000,
       }) end
     })
   end
@@ -35,7 +34,7 @@ local sources = {
   formatting.rustfmt, -- Para Rust
   --formatting.shfmt, -- Para shell-script
   --formatting.sqlformat, -- Para SQL
-  --formatting.taplo, -- Para TOML (Toolkit)
+  -- formatting.taplo, -- Para TOML (Toolkit)
   --formatting.terrafmt, -- Para terraform
 
   -- Diagnosticos del código.
