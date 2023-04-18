@@ -22,7 +22,7 @@ set.laststatus = 3
 set.linebreak = true
 set.breakindent = true
 set.colorcolumn = "81"
-set.cursorcolumn = true
+set.cursorcolumn = false
 --set.background = "dark"
 set.list = true
 set.listchars = { trail = "»", eol = "", extends = "•", precedes = "•" }

@@ -28,7 +28,7 @@ local mason_config = {
 }
 
 local lsp_mason_config = {
-  ensure_installed = { "rust_analyzer", "sumneko_lua", "dockerls", "elixirls",
+  ensure_installed = { "rust_analyzer", "lua-ls", "dockerls", "elixirls",
     "eslint", "yamlls", "bashls", "jsonls", "pyright" },
 }
 

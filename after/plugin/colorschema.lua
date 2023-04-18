@@ -1,4 +1,4 @@
-vim.cmd( "colorscheme tokyonight" )
+vim.cmd("colorscheme tokyonight-moon")
 
 local state_nightfox, nightfox = pcall( require, "nightfox" )
 
@@ -18,4 +18,3 @@ nightfox.setup({
    }
 })
 
-vim.cmd( "colorscheme carbonfox" )
