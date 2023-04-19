@@ -28,8 +28,8 @@ M.setup = function()
       style = "minimal",
       border = "rounded",
       source = "always",
-      header = "",
-      prefix = "",
+      -- header = "",
+      -- prefix = "",
     },
   }
 
@@ -46,10 +46,6 @@ M.setup = function()
       border = "rounded",
     })
   end
-
-  --if vim.lsp.handlers["textDocument/formatting"] ~= nil then
-  --vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()")
-  --end
 end
 
 local function lsp_highlight_document(client)
@@ -93,10 +89,7 @@ end
 local cmp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 if not cmp_status then
-  vim.notify(cmp_nvim_lsp, "error", {
-    title = "Cmp nvim lsp"
-  })
-  return
+  return M
 end
 
 M.capabilities = cmp_nvim_lsp.default_capabilities()

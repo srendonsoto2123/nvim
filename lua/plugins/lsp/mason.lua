@@ -1,8 +1,5 @@
 return {
   'wiliamboman/mason.nvim',
-  dependencies = {
-    'neovim/nvim-lspconfig',
-  },
   opts = {
     ui = {
       icons = {
