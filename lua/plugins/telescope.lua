@@ -27,10 +27,12 @@ return {
         },
       },
     },
-    init = function()
-      require 'telescope' .load_extension 'fzy_native'
-      require 'telescope' .load_extension 'media_files'
-      require 'telescope' .load_extension 'dap'
+    config = function(_, opts)
+      local telescope = require 'telescope'
+      telescope .setup(opts)
+      telescope .load_extension 'fzy_native'
+      telescope .load_extension 'media_files'
+      -- telescope .load_extension 'dap'
     end
   },
   'nvim-lua/plenary.nvim',

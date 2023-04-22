@@ -57,6 +57,7 @@ local maps = {
 
   setLspMaps = function(bufnr)
     local fn = "lua vim.lsp.buf."
+    vim.print('Ejecutando')
     return {
       map_cr("n", "gD", fn .. "declaration()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "gd", fn .. "definition()"):set_buffer(bufnr):with_noremap():with_silent(),

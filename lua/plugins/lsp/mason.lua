@@ -9,5 +9,6 @@ return {
       },
       border = "rounded"
     }
-  }
+  },
+  build = ':MasonUpdate',
 }

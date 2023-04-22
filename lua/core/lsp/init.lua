@@ -37,7 +37,7 @@ mason.setup({
 mason_lspconfig.setup({
   ensure_installed = { "rust_analyzer", "lua_ls", "dockerls", "elixirls",
     "eslint", "yamlls", "bashls", "jsonls", "pyright" },
- })
+})
 
 local handlers = require("core.lsp.handlers")
 handlers.setup()
@@ -52,6 +52,8 @@ mason_lspconfig.setup_handlers({
   end,
   ["lua_ls"] = function()
     lspconfig.lua_ls.setup {
+      on_attach = handlers.on_attach,
+      capabilities = handlers.capabilities,
       settings = {
         Lua = {
           runtime = {
@@ -67,17 +69,22 @@ mason_lspconfig.setup_handlers({
         }
       },
     }
+    require('mapping')('lsp')
   end,
   ["elixirls"] = function()
     lspconfig.elixirls.setup {
-      cmd = { "/home/srendonsoto2123/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" }
+      cmd = { "/home/srendonsoto2123/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" },
+      on_attach = handlers.on_attach,
+      capabilities = handlers.capabilities,
     }
   end,
   ["rust_analyzer"] = function()
     lspconfig.rust_analyzer.setup({
       cmd = {
         "rustup", "run", "stable", "rust-analyzer",
-      }
+      },
+      on_attach = handlers.on_attach,
+      capabilities = handlers.capabilities,
     })
   end,
 })

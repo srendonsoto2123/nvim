@@ -4,11 +4,15 @@ return {
     ensure_installed = { "rust_analyzer", "lua_ls", "dockerls", "elixirls",
     "eslint", "yamlls", "bashls", "jsonls", "pyright" },
   },
-  init = function()
-    local handlers = require 'core.lsp.handlers'
+  config = function(_, opts)
+    local mason_lspconfig = require 'mason-lspconfig'
+    local handlers = require 'utils.handlers'
     local lspconfig = require 'lspconfig'
+
+    mason_lspconfig.setup(opts)
     handlers.setup()
-    require 'mason-lspconfig' .setup_handlers({
+
+    mason_lspconfig.setup_handlers({
       function(server_name)
         lspconfig[server_name].setup({
           on_attach = handlers.on_attach,
@@ -32,18 +36,24 @@ return {
               }
             }
           },
+          on_attach = handlers.on_attach,
+          capabilities = handlers.capabilities,
         }
       end,
       ["elixirls"] = function()
         lspconfig.elixirls.setup {
-          cmd = { "/home/srendonsoto2123/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" }
+          cmd = { "/home/srendonsoto2123/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" },
+          on_attach = handlers.on_attach,
+          capabilities = handlers.capabilities,
         }
       end,
       ["rust_analyzer"] = function()
         lspconfig.rust_analyzer.setup({
           cmd = {
             "rustup", "run", "stable", "rust-analyzer",
-          }
+          },
+          on_attach = handlers.on_attach,
+          capabilities = handlers.capabilities,
         })
       end,
     });

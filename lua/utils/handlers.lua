@@ -1,12 +1,15 @@
+local mapping = require "utils.mapping"
+local lsp_keymaps = require "mapping.maps".setLspMaps
+
 local M = {}
 
 -- TODO: Backfill this to template
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
+    { name = "DiagnosticSignInfo",  text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -63,20 +66,33 @@ local function lsp_highlight_document(client)
   end
 end
 
-local mapping = require "utils.mapping"
-local lsp_keymaps = require "mapping.maps".setLspMaps
+local function lsp_highlight_document2(client, bufnr)
+  local group = vim.api.nvim_create_augroup('lsp_document_highlight', {})
+  vim.api.nvim_create_autocmd('CursorHold', {
+    group = group,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.document_highlight()
+    end
+  })
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    group = group,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.clear_references()
+    end
+  })
+end
 
-M.on_attach = function(client, bufnr)
-  mapping.set_maps(lsp_keymaps(bufnr))
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', "v:lua.vim.lsp.omnifunc")
-
+local function format_on_save(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("Format", { clear = true }),
       buffer = bufnr,
-      callback = function() vim.lsp.buf.format({
+      callback = function()
+        vim.lsp.buf.format({
           bufnr = bufnr,
-          timeout_ms = 5000,
+          async = true,
           filter = function(cliente)
             return cliente.name ~= "tsserver"
           end
@@ -84,6 +100,13 @@ M.on_attach = function(client, bufnr)
       end
     })
   end
+end
+
+M.on_attach = function(client, bufnr)
+  mapping.set_maps(lsp_keymaps(bufnr))
+  lsp_highlight_document2(client)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', "v:lua.vim.lsp.omnifunc")
+  format_on_save()
 end
 
 local cmp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

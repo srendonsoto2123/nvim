@@ -1,5 +1,5 @@
 return {
-  'nvim-treesitter/nvim-treesitterd',
+  'nvim-treesitter/nvim-treesitter',
   opts = {
     ensure_installed = {
       "rust",
@@ -26,5 +26,8 @@ return {
       enable = false,
     },
   },
-  build = ":TSUpdate"
+  config = function(_, opts)
+    require'nvim-treesitter.configs'.setup(opts)
+  end,
+  build = ":TSUpdate",
 }

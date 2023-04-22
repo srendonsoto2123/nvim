@@ -1,7 +1,7 @@
 return {
   {
     'jiangmiao/auto-pairs',
-    config = function()
+    init = function()
       vim.g.AutoPairsFlyMode = 1
       vim.g.AutoPairsMapCh = 0
       vim.g.AutoPairsShortcutToggle = '<M-}>'
@@ -10,7 +10,7 @@ return {
   'windwp/nvim-ts-autotag',
   -- COLOR SCHEME
   {
-    'forke/tokyonight.nvim',
+    'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
     init = function()
@@ -40,6 +40,9 @@ return {
     'kyazdani42/nvim-tree.lua',
     dependencies = {
       'kyazdani42/nvim-web-devicons'
-    }
+    },
+    config = function()
+      require 'nvim-tree'.setup()
+    end
   }
 }

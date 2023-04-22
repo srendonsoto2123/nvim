@@ -1,4 +1,3 @@
-require "user"
-require "plugin_manager"
-require "core"
-require "mapping.exec"
+require 'user'
+require 'plugin'
+require 'mapping.exec'
