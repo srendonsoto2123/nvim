@@ -84,6 +84,13 @@ local function lsp_highlight_document2(client, bufnr)
   })
 end
 
+local function lsp_autosave(client, bufnr)
+  vim.lsp.buf.format({
+    bufnr = bufnr,
+    async = true,
+  })
+end
+
 local function format_on_save(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
