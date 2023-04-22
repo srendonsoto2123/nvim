@@ -16,7 +16,7 @@ return {
     config = function()
       local cmp = require('cmp')
       local lspkind = require("lspkind")
-      local config_cmp = require("core.cmp.config")
+      local config_cmp = require("plugins.cmp.config")
       local recursos = config_cmp.sources
       local snippy = require("snippy")
 
