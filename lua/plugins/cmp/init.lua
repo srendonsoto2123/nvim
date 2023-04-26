@@ -13,6 +13,7 @@ return {
         dependencies = { 'dcampos/cmp-snippy' }
       }
     },
+    event = 'InsertEnter',
     config = function()
       local cmp = require('cmp')
       local lspkind = require("lspkind")
@@ -22,17 +23,15 @@ return {
 
       cmp.setup({
         snippet = config_cmp.snippet,
-
         completion = {
           autocomplete = false,
         },
-
-        preselect = false,
-
+        preselect = true,
         -- Mapeos para el cmp
         mapping = {
           ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
           ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
+          ["<C-N>"] = cmp.mapping(cmp.mapping.select_prev_item()),
           ["<C-d>"] = cmp.mapping.scroll_docs(-4),
           ["<C-u>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
@@ -71,7 +70,6 @@ return {
           recursos.path,
           recursos.nvim_lsp_signature_help,
         },
-
         -- Forma de presentar el menu
         formatting = {
           format = lspkind.cmp_format {
@@ -84,22 +82,17 @@ return {
             }
           }
         },
-
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
-        };
+        },
         -- Elementos experimentales para añadir al cmd
         experimental = {
           ghost_text = true,
         },
       })
-    end,
-    init = function()
-      local cmp = require('cmp')
-      local recursos = require('plugins.cmp.config').sources
 
-      cmp.setup.cmdline('/', {
+      cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           recursos.buffer,
@@ -116,10 +109,4 @@ return {
       })
     end,
   },
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'hrsh7th/cmp-nvim-lsp-signature-help',
-  'onsails/lspkind-nvim',
-  { 'dcampos/cmp-snippy', dependencies = { 'dcampos/nvim-snippy' }}
 }

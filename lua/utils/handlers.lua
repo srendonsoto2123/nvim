@@ -31,64 +31,48 @@ M.setup = function()
       style = "minimal",
       border = "rounded",
       source = "always",
-      -- header = "",
-      -- prefix = "",
+      header = "",
+      prefix = "",
     },
   }
 
   vim.diagnostic.config(config)
+end
 
-  if vim.lsp.handlers["textDocument/hover"] ~= nil then
+local function hover_support(client)
+  if client.supports_method('textDocument/hover') then
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = "rounded",
     })
   end
+end
 
-  if vim.lsp.handlers["textDocument/signatureHelp"] ~= nil then
+local function signature_help_support(client)
+  if client.supports_method('textDocument/signatureHelp') then
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
       border = "rounded",
     })
   end
 end
 
-local function lsp_highlight_document(client)
+local function lsp_highlight_document(client, bufnr)
   if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_exec(
-      [[
-         augroup lsp_document_highlight
-           autocmd! * <buffer>
-           autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-           autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-         augroup END
-         ]],
-      false
-    )
+    local group = vim.api.nvim_create_augroup('lsp_document_highlight', {})
+    vim.api.nvim_create_autocmd('CursorHold', {
+      group = group,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.document_highlight()
+      end
+    })
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = group,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.clear_references()
+      end
+    })
   end
-end
-
-local function lsp_highlight_document2(client, bufnr)
-  local group = vim.api.nvim_create_augroup('lsp_document_highlight', {})
-  vim.api.nvim_create_autocmd('CursorHold', {
-    group = group,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.document_highlight()
-    end
-  })
-  vim.api.nvim_create_autocmd('CursorMoved', {
-    group = group,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.clear_references()
-    end
-  })
-end
-
-local function lsp_autosave(client, bufnr)
-  vim.lsp.buf.format({
-    bufnr = bufnr,
-    async = true,
-  })
 end
 
 local function format_on_save(client, bufnr)
@@ -99,9 +83,15 @@ local function format_on_save(client, bufnr)
       callback = function()
         vim.lsp.buf.format({
           bufnr = bufnr,
-          async = true,
+          timeout_ms = 10000,
           filter = function(cliente)
-            return cliente.name ~= "tsserver"
+            local ft = vim.bo.filetype
+            local have_nls = #require('null-ls.sources').get_available(ft, 'NULL_LS_FORMATTING') > 0
+            if have_nls then
+              return client.name == 'null-ls'
+            else
+              return cliente.name ~= "tsserver" and client.name ~= 'null-ls'
+            end
           end
         })
       end
@@ -111,9 +101,13 @@ end
 
 M.on_attach = function(client, bufnr)
   mapping.set_maps(lsp_keymaps(bufnr))
-  lsp_highlight_document2(client)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', "v:lua.vim.lsp.omnifunc")
-  format_on_save()
+
+  lsp_highlight_document(client, bufnr)
+  format_on_save(client, bufnr)
+
+  hover_support(client)
+  signature_help_support(client)
 end
 
 local cmp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

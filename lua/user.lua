@@ -4,6 +4,7 @@ local set = vim.opt
 vim.g.mapleader = " "
 vim.g.one_allow_italics = 1
 vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 -- OPCIONES UI --
 set.cmdheight = 2
