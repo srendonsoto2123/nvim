@@ -5,7 +5,9 @@ return {
       vim.g.AutoPairsFlyMode = 1
       vim.g.AutoPairsMapCh = 0
       vim.g.AutoPairsShortcutToggle = '<M-}>'
-    end
+    end,
+    lazy = true,
+    event = 'VeryLazy'
   },
   'windwp/nvim-ts-autotag',
   -- COLOR SCHEME
@@ -18,17 +20,12 @@ return {
     end
   },
   {
-    'kyazdani42/nvim-web-devicons',
-    lazy = true,
-    opts = {
-      default = true,
-    }
-  },
-  {
     'phaazon/hop.nvim',
     opts = {
       keys = 'asdfghjklñqwertyuiopzxcvbnm'
-    }
+    },
+    lazy = true,
+    event = 'VeryLazy',
   },
   {
     'rcarriga/nvim-notify',
@@ -39,8 +36,16 @@ return {
   {
     'kyazdani42/nvim-tree.lua',
     dependencies = {
-      'kyazdani42/nvim-web-devicons'
+      {
+        'kyazdani42/nvim-web-devicons',
+        lazy = true,
+        opts = {
+          default = true,
+        }
+      },
     },
+    lazy = true,
+    event = 'VeryLazy',
     config = function()
       require 'nvim-tree'.setup()
     end
