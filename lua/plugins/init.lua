@@ -6,8 +6,6 @@ return {
       vim.g.AutoPairsMapCh = 0
       vim.g.AutoPairsShortcutToggle = '<M-}>'
     end,
-    lazy = true,
-    event = 'VeryLazy'
   },
   'windwp/nvim-ts-autotag',
   -- COLOR SCHEME
@@ -20,7 +18,7 @@ return {
     end
   },
   {
-    'phaazon/hop.nvim',
+    'smoka7/hop.nvim',
     opts = {
       keys = 'asdfghjklñqwertyuiopzxcvbnm'
     },
