@@ -16,13 +16,13 @@ set.splitbelow = true
 set.hlsearch = false
 set.cursorline = true
 set.wrap = false
-set.scrolloff = 7
+set.scrolloff = 4
 set.sidescrolloff = 5
 set.relativenumber = true
 set.laststatus = 3
 set.linebreak = true
 set.breakindent = true
-set.colorcolumn = "81"
+set.colorcolumn = "85"
 set.cursorcolumn = false
 --set.background = "dark"
 set.list = true
@@ -43,8 +43,8 @@ set.encoding = "utf-8"
 set.smartcase = true
 set.ignorecase = true
 set.lazyredraw = true
--- END OPCIONES FUNCIONALIDAD --
 set.ignorecase = true
+-- END OPCIONES FUNCIONALIDAD --
 
 -- OPCIONES DE ESCRITURA --
 set.conceallevel = 0

@@ -7,9 +7,9 @@ local M = {}
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -83,7 +83,6 @@ local function format_on_save(client, bufnr)
       callback = function()
         vim.lsp.buf.format({
           bufnr = bufnr,
-          timeout_ms = 10000,
           filter = function(cliente)
             local ft = vim.bo.filetype
             local have_nls = #require('null-ls.sources').get_available(ft, 'NULL_LS_FORMATTING') > 0
@@ -94,6 +93,10 @@ local function format_on_save(client, bufnr)
             end
           end
         })
+        vim.notify('Autoformat finish', 2, {
+          title = "Format document",
+          icon = " ",
+        });
       end
     })
   end
