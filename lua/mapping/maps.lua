@@ -3,6 +3,7 @@ local map_cr = mapping.map_cr
 local map_cmd = mapping.map_cmd
 
 local telescope_builtin = "lua require('telescope.builtin')."
+local dap = "lua require('dap')."
 
 local maps = {
   -- USER MAPS
@@ -20,7 +21,6 @@ local maps = {
     map_cmd({ "n", "v" }, "<c-k>", "<c-w>k"):with_noremap(),
     map_cmd({ "n", "v" }, "<c-l>", "<c-w>l"):with_noremap(),
   },
-
   -- LSP MAPPING
   lsp = {
     map_cr("n", "<Leader>o", "lua vim.diagnostic.open_float()"):with_noremap(),
@@ -44,6 +44,7 @@ local maps = {
     map_cr({ "n", "v" }, "<Leader>nt", "NvimTreeToggle"):with_noremap(),
     map_cr({ "n", "v" }, "<Leader>nf", "NvimTreeFocus"):with_noremap(),
     map_cr({ "n", "v" }, "<Leader>nc", "NvimTreeClose"):with_noremap(),
+    map_cr({ "n", "v" }, "<Leader>nr", "NvimTreeRefresh"):with_noremap(),
   },
 
   -- MOTION MAPS
@@ -53,6 +54,13 @@ local maps = {
     map_cr({ "n", "v" }, "<Leader>d", "HopLineStartAC"):with_noremap():with_silent(),
     map_cr({ "n", "v" }, "<Leader>e", "HopLineStartBC"):with_noremap():with_silent(),
     map_cr({ "n", "v" }, "<Leader>s", "HopPattern"):with_noremap():with_silent(),
+  },
+
+  dap = {
+    map_cr({ "n", "v" }, "<F8>", dap .. "toggle_breakpoint()"),
+    map_cr({ "n", "v" }, "<F9>", dap .. "step_into()"),
+    map_cr({ "n", "v" }, "<F10>", dap .. "step_over()"),
+    map_cr({ "n", "v" }, "<F5>", dap .. "continue()"),
   },
 
   setLspMaps = function(bufnr)
@@ -65,7 +73,8 @@ local maps = {
       map_cr("n", "<Leader>h", fn .. "signature_help()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "<Leader>aw", fn .. "add_workspace_folder()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "<Leader>rw", fn .. "remove_workwpace_folder()"):set_buffer(bufnr):with_noremap():with_silent(),
-      map_cr("n", "<Leader>lw", "lua print(vim.inspect( vim.lsp.buf.list_workspace_folders() ))"):set_buffer(bufnr):with_noremap():with_silent(),
+      map_cr("n", "<Leader>lw", "lua print(vim.inspect( vim.lsp.buf.list_workspace_folders() ))"):set_buffer(bufnr)
+          :with_noremap():with_silent(),
       map_cr("n", "<Leader>D", fn .. "type_definition()"):set_buffer(bufnr):with_silent():with_noremap(),
       map_cr("n", "<Leader>rn", fn .. "rename()"):set_buffer(bufnr):with_noremap():with_silent(),
       map_cr("n", "<Leader>c", fn .. "code_action()"):set_buffer(bufnr):with_noremap():with_silent(),

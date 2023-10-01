@@ -31,7 +31,7 @@ set.listchars = { trail = "»", eol = "", extends = "•", precedes = "•" }
 
 -- OPCIONES FUNCIONALIDAD --
 set.clipboard = "unnamedplus"
-set.undodir = vim.fn.stdpath("cache") .. "/undo"
+set.undodir = { vim.fn.stdpath("cache") .. "/undo" }
 set.hidden = true
 set.updatetime = 300
 set.writebackup = false

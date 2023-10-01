@@ -75,6 +75,24 @@ local function lsp_highlight_document(client, bufnr)
   end
 end
 
+local function diagnostics_highlight_document(client, bufnr)
+  local group = vim.api.nvim_create_augroup('diagnostic_hightlight', {})
+  vim.api.nvim_create_autocmd('CursorHold', {
+    group = group,
+    buffer = bufnr,
+    callback = function()
+      vim.diagnostic.open_float()
+    end,
+  })
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    group = group,
+    buffer = bufnr,
+    callback = function()
+      vim.diagnostic.open_float()
+    end,
+  })
+end
+
 local function format_on_save(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
