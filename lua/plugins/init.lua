@@ -1,13 +1,12 @@
 return {
-  {
-    'jiangmiao/auto-pairs',
-    init = function()
-      vim.g.AutoPairsFlyMode = 1
-      vim.g.AutoPairsMapCh = 0
-      vim.g.AutoPairsShortcutToggle = '<M-}>'
-    end,
-  },
   'windwp/nvim-ts-autotag',
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {
+      disable_filetypes = { 'TelescopePrompt', 'vim' },
+    },
+  },
   -- COLOR SCHEME
   {
     'folke/tokyonight.nvim',

@@ -20,6 +20,7 @@ return {
       local config_cmp = require("plugins.cmp.config")
       local recursos = config_cmp.sources
       local snippy = require("snippy")
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
       cmp.setup({
         snippet = config_cmp.snippet,
@@ -106,6 +107,11 @@ return {
           recursos.cmdline,
         }),
       })
+
+      cmp.event:on(
+        'confirm_done',
+        cmp_autopairs.on_confirm_done(ear
+      );
     end,
   },
 }
