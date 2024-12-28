@@ -26,7 +26,7 @@ set.colorcolumn = "85"
 set.cursorcolumn = false
 --set.background = "dark"
 set.list = true
-set.listchars = { trail = "»", eol = "", extends = "•", precedes = "•" }
+set.listchars = { trail = "»", eol = "󰌑", extends = "•", precedes = "•" }
 -- END OPCIONES UI --
 
 -- OPCIONES FUNCIONALIDAD --
